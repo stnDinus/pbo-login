@@ -9,12 +9,31 @@ package id.ac.dinus.a112214433;
  * @author a112214433
  */
 public class FrmMenu extends javax.swing.JFrame {
+  private String role;
 
   /**
    * Creates new form NewJFrame
    */
   public FrmMenu() {
     initComponents();
+  }
+
+  public FrmMenu(String role) {
+    initComponents();
+    this.role = role;
+    setAccessBasedOnRole();
+  }
+
+  private void setAccessBasedOnRole() {
+    if (role.equals("admin")) {
+      // Tampilkan semua menu
+      mmMaster.setEnabled(true);
+      mmTransaksi.setEnabled(true);
+    } else if (role.equals("user")) {
+      // Hanya tampilkan menu transaksi
+      mmMaster.setEnabled(false);
+      mmTransaksi.setEnabled(true);
+    }
   }
 
   /**
@@ -24,11 +43,12 @@ public class FrmMenu extends javax.swing.JFrame {
    */
   @SuppressWarnings("unchecked")
   // <editor-fold defaultstate="collapsed" desc="Generated
+  // <editor-fold defaultstate="collapsed" desc="Generated
   // Code">//GEN-BEGIN:initComponents
   private void initComponents() {
 
     jMenuBar1 = new javax.swing.JMenuBar();
-    jMenu1 = new javax.swing.JMenu();
+    mmMaster = new javax.swing.JMenu();
     mmBarang = new javax.swing.JMenuItem();
     mmKonsumen = new javax.swing.JMenuItem();
     jSeparator1 = new javax.swing.JPopupMenu.Separator();
@@ -37,7 +57,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
     setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-    jMenu1.setText("Data Master");
+    mmMaster.setText("Data Master");
 
     mmBarang.setText("Data Barang");
     mmBarang.addActionListener(new java.awt.event.ActionListener() {
@@ -45,7 +65,7 @@ public class FrmMenu extends javax.swing.JFrame {
         mmBarangActionPerformed(evt);
       }
     });
-    jMenu1.add(mmBarang);
+    mmMaster.add(mmBarang);
 
     mmKonsumen.setText("Data Konsumen");
     mmKonsumen.addActionListener(new java.awt.event.ActionListener() {
@@ -53,8 +73,8 @@ public class FrmMenu extends javax.swing.JFrame {
         mmKonsumenActionPerformed(evt);
       }
     });
-    jMenu1.add(mmKonsumen);
-    jMenu1.add(jSeparator1);
+    mmMaster.add(mmKonsumen);
+    mmMaster.add(jSeparator1);
 
     mmKeluar.setText("Keluar");
     mmKeluar.addActionListener(new java.awt.event.ActionListener() {
@@ -62,9 +82,9 @@ public class FrmMenu extends javax.swing.JFrame {
         mmKeluarActionPerformed(evt);
       }
     });
-    jMenu1.add(mmKeluar);
+    mmMaster.add(mmKeluar);
 
-    jMenuBar1.add(jMenu1);
+    jMenuBar1.add(mmMaster);
 
     mmTransaksi.setText("Transaksi");
     mmTransaksi.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -145,12 +165,12 @@ public class FrmMenu extends javax.swing.JFrame {
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  private javax.swing.JMenu jMenu1;
   private javax.swing.JMenuBar jMenuBar1;
   private javax.swing.JPopupMenu.Separator jSeparator1;
   private javax.swing.JMenuItem mmBarang;
   private javax.swing.JMenuItem mmKeluar;
   private javax.swing.JMenuItem mmKonsumen;
+  private javax.swing.JMenu mmMaster;
   private javax.swing.JMenu mmTransaksi;
   // End of variables declaration//GEN-END:variables
 }
