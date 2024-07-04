@@ -32,7 +32,6 @@ public class FrmLogin extends javax.swing.JFrame {
       for (byte b : messageDigest) {
         sb.append(String.format("%02x", b));
       }
-      System.out.println(sb.toString());
       return sb.toString();
     } catch (Exception e) {
       e.printStackTrace();
